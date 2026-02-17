@@ -2383,7 +2383,7 @@ Our implementation adapts Shape Up for AI agent collaboration.
 ---
 
 ### PILL Resources
-- **This repository:** https://github.com/madebypill/shape-up-ai-native
+- **This repository:** https://github.com/sergiolindolfoferreira/shape-up-ai-native
 - **Contributing:** See [CONTRIBUTING.md](../CONTRIBUTING.md)
 - **Setup guide:** [Agent Setup Guide](./agent-setup-guide.md)
 - **Basecamp integration:** [Basecamp Implementation](./basecamp-implementation.md)
