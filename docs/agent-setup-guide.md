@@ -879,3 +879,20 @@ This guide is based on **Vasco Gama**, a real AI programming agent created using
 **Ready to build your AI programming team?** Start with Part 1 and follow step-by-step!
 
 **Questions?** Open an issue in this repository or join the OpenClaw community.
+
+---
+
+## Navigation
+
+**🎯 Start Here:** [README](../README.md) (Choose your path)
+
+**📖 After Agent Setup:**
+- [Basecamp Implementation](basecamp-implementation.md) - Configure your workflow
+- [Shaping Guide](shaping.md) - Learn to shape for your agent
+- [Building Guide](building.md) - Agent + human collaboration
+
+**🎓 Templates & Examples:**
+- [Pitch Template](../templates/pitch-template.md) - Shape your first feature
+- [Real Example](../examples/performance-dashboard/pitch.md) - See it in action
+
+**Next Step:** Set up Basecamp and shape your first pitch!
