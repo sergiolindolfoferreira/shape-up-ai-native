@@ -65,18 +65,18 @@
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  📦 SHIPPING PHASE (Azure DevOps)                                           │
+│  📦 SHIPPING PHASE (GitHub Actions + Azure)                                 │
 │  ────────────────────────────────────────────────────────────────────────   │
 │                                                                              │
 │  ┌──────────────────────────────────────────────────────────────────┐       │
 │  │  • Final code review                                             │       │
-│  │  • Merge to main                                                 │       │
-│  │  • CI/CD pipeline                                                │       │
-│  │  • Deploy to production                                          │       │
+│  │  • Merge to main (triggers GitHub Actions)                       │       │
+│  │  • Auto deploy pipeline                                          │       │
+│  │  • Deploy to Azure App Services                                  │       │
 │  └──────────────────────────────────────────────────────────────────┘       │
 │                               │                                              │
 │                               ▼                                              │
-│                    [ 🎉 Production Release ]                                 │
+│                    [ 🎉 Azure App Services ]                                 │
 └─────────────────────────────────────────────────────────────────────────────┘
                                 │
                                 │
@@ -98,7 +98,7 @@ LEGEND:
 🔨 SHAPING      Shape Up methodology - Define problem & solution
 🎲 BETTING      Shape Up methodology - Commit resources
 🚀 BUILDING     Claude Code execution - Spec → Plan → Implement
-📦 SHIPPING     DevOps deployment - Review → Merge → Deploy
+📦 SHIPPING     GitHub Actions + Azure - Review → Merge → Auto Deploy
 
 [ file.md ]     Artifact/Output
 ┌────────┐      Process/Activity

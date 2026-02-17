@@ -35,9 +35,9 @@ graph TD
     ImplWork --> ImplOut[✨ Working Features<br/>+ Tests]:::artifactNode
     
     %% SHIPPING PHASE
-    ImplOut --> Shipping[📦 SHIPPING<br/>Azure DevOps]:::shippingNode
-    Shipping --> ShipWork[Code Review<br/>+ Merge to Main<br/>+ Deploy Pipeline]:::workNode
-    ShipWork --> Release[🎉 Production Release]:::releaseNode
+    ImplOut --> Shipping[📦 SHIPPING<br/>GitHub Actions]:::shippingNode
+    Shipping --> ShipWork[Code Review<br/>+ Merge to Main<br/>+ Auto Deploy]:::workNode
+    ShipWork --> Release[🎉 Azure App Services]:::releaseNode
     
     %% Cooldown feedback loop
     Release -.->|Learnings & Bugs| Shaping
@@ -67,7 +67,7 @@ graph TD
 | 📝 **SPEC MODE** | Claude Code | Pitch → Technical specification |
 | 📋 **PLAN MODE** | Claude Code | Spec → Task breakdown |
 | 💻 **IMPLEMENT MODE** | Claude Code | Plan → Code + Tests |
-| 📦 **SHIPPING** | Azure DevOps | Review → Merge → Deploy |
+| 📦 **SHIPPING** | GitHub Actions + Azure | Review → Merge to Main → Auto Deploy |
 
 ---
 
