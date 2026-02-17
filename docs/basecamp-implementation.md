@@ -584,3 +584,22 @@ Therefore: Bet on work that generates ~15 PRs
 **Questions?** Open an issue or discussion in the repository.
 
 **Using this successfully?** Share your experience as a case study!
+
+---
+
+## Navigation
+
+**🎯 Start Here:** [README](../README.md) (Choose your path)
+
+**📖 Understand First:**
+- [Principles](principles.md) - What is Shape Up AI Native?
+- [Shaping](shaping.md) - How to shape for AI agents
+- [Betting](betting.md) - How to prioritize
+
+**🤖 Need an AI Agent?** [Agent Setup Guide](agent-setup-guide.md) - Create your programmer
+
+**🎓 Templates:**
+- [Pitch Template](../templates/pitch-template.md) - Shape new features
+- [Real Example](../examples/performance-dashboard/pitch.md) - Complete pitch
+
+**Next Step:** Shape your first pitch and run a cycle!
