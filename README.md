@@ -34,6 +34,18 @@ But in 2026, **the game has changed:**
 
 ---
 
+## 🏢 Who's Using This
+
+**[PILL](https://madebypill.com)** — Software engineering & applied AI company in Portugal
+- 4-person technical team + AI agents
+- Building: Real Estate CRM (MOON/PULSE), MoneyLights, AJA2 AI
+- Using 1-2 week cycles with continuous PR review
+- Results: TBD (we'll share metrics as we go!)
+
+_Using Shape Up AI Native in your team? [Add your story](CONTRIBUTING.md)!_
+
+---
+
 ## 🚀 Key Differences
 
 | Shape Up (2019) | Shape Up AI Native (2026) |
