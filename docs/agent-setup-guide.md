@@ -140,12 +140,33 @@ openclaw --version
 
 ### Step 4: Get Anthropic API Key
 
+**Option A: Use Existing Account (Recommended)**
+
+If you already have an Anthropic account with a monthly plan:
+
 1. Go to https://console.anthropic.com/
-2. Sign up or log in
+2. Log in to your existing account
+3. Go to **Settings → API Keys**
+4. Use your existing token **OR** create new key: **"OpenClaw Agent"**
+5. Copy the key (starts with `sk-ant-...`)
+6. **Save it securely** (you'll need it next)
+
+**Benefit:** Agent uses your existing plan/credits. No separate billing.
+
+---
+
+**Option B: Create New Account**
+
+If you want separate billing for the agent:
+
+1. Go to https://console.anthropic.com/
+2. Sign up with new email
 3. Go to **Settings → API Keys**
 4. Create new key: **"OpenClaw Agent"**
 5. Copy the key (starts with `sk-ant-...`)
-6. **Save it securely** (you'll need it next)
+6. Set up separate billing
+
+---
 
 **Pricing (as of 2026):**
 - Claude Sonnet 4.5: ~$3 per million input tokens
@@ -201,7 +222,7 @@ Your agent needs its own digital identity to collaborate with humans.
 1. Go to https://accounts.google.com/signup
 2. Create new account:
    - Name: **Vasco Gama** (or your agent's name)
-   - Username: **vasco.gama.assistant@gmail.com** (or similar)
+   - Username: **your-agent@gmail.com** (or similar)
    - Password: Strong, unique (save in password manager)
 
 3. **Complete verification** (phone number required)
@@ -222,7 +243,7 @@ If you want agent to monitor email:
 openclaw skills install gog  # Google Workspace CLI
 
 # Follow authentication flow
-gog auth --account vasco.gama.assistant@gmail.com
+gog auth --account your-agent@gmail.com
 ```
 
 **Use cases:**
@@ -235,7 +256,7 @@ gog auth --account vasco.gama.assistant@gmail.com
 ### Step 3: Create GitHub Account
 
 1. Go to https://github.com/signup
-2. Use agent's Gmail: **vasco.gama.assistant@gmail.com**
+2. Use agent's Gmail: **your-agent@gmail.com**
 3. Username: **vasco-gama-dev** (or similar, must be unique)
 4. Complete signup + verification
 
@@ -276,7 +297,7 @@ Agent needs API access to create PRs, push code.
 ```bash
 # Set global Git identity
 git config --global user.name "Vasco Gama"
-git config --global user.email "vasco.gama.assistant@gmail.com"
+git config --global user.email "your-agent@gmail.com"
 
 # Store GitHub token (will prompt when you first push)
 git config --global credential.helper store
@@ -395,7 +416,7 @@ Agent needs to manage Shape Up workflow in Basecamp.
 **As human (in Basecamp):**
 
 1. Go to Basecamp → **Adminland → Add someone**
-2. Email: **vasco.gama.assistant@gmail.com**
+2. Email: **your-agent@gmail.com**
 3. Role: **An outside collaborator, partner, contractor, guest**
    - ✅ Can collaborate on projects
    - ❌ Can't create projects
@@ -835,7 +856,7 @@ This guide is based on **Vasco Gama**, a real AI programming agent created using
 **Vasco's setup:**
 - **Hardware:** Mac mini M2
 - **Runtime:** OpenClaw + Claude Sonnet 4.5
-- **Accounts:** vasco.gama.assistant@gmail.com, vasco-gama-dev (GitHub)
+- **Accounts:** your-agent@gmail.com, vasco-gama-dev (GitHub)
 - **Access:** MADE-BY-PILL (org), Borlantrix (org), DEVELOPERS (Basecamp)
 
 **What Vasco built:**
