@@ -165,3 +165,9 @@ Or link to sketch/whiteboard photo.
 ## Notes
 
 [Any additional context, references, or decisions made during shaping]
+
+---
+
+**📖 Learn more:** [Shaping Guide](../docs/shaping.md) | **🎯 Real example:** [Performance Dashboard](../examples/performance-dashboard/pitch.md)
+
+**🚀 Next:** [Set up Basecamp](../docs/basecamp-implementation.md) to post your pitch
