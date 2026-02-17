@@ -38,7 +38,7 @@ But in 2026, **the game has changed:**
 
 **[PILL](https://madebypill.com)** — Software engineering & applied AI company in Portugal
 - 4-person technical team + AI agents
-- Building: Real Estate CRM (MOON/PULSE), MoneyLights, AJA2 AI
+- Building multiple B2B SaaS products across real estate, fintech, and construction tech
 - Using 1-2 week cycles with continuous PR review
 - Results: TBD (we'll share metrics as we go!)
 
