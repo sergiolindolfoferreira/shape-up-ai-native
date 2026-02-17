@@ -100,3 +100,7 @@ This scope is complete when:
 **[Date]:** Encountered [issue], resolved by [solution]
 **[Date]:** PR #XX opened
 **[Date]:** PR #XX merged, scope complete ✅
+
+---
+
+**📖 Learn more:** [Building Guide](../docs/building.md) | **🎯 Back to:** [README](../README.md)

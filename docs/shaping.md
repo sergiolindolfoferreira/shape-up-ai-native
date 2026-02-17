@@ -405,3 +405,19 @@ See [example pitch](../examples/performance-dashboard/pitch.md) for a complete, 
 ---
 
 **Next:** [How to Bet When Agents Move Fast](betting.md)
+
+---
+
+## Navigation
+
+**← Previous:** [Principles](principles.md) (Understanding Shape Up AI Native)
+
+**→ Next:** [Betting](betting.md) (How to prioritize and commit)
+
+**📚 Implementation Guides:**
+- [Basecamp Setup](basecamp-implementation.md) - Step-by-step workflow setup
+- [Agent Setup](agent-setup-guide.md) - Create your AI programmer
+- [Templates](../templates/pitch-template.md) - Copy-paste pitch template
+
+**🎯 See It In Action:**
+- [Real Pitch Example](../examples/performance-dashboard/pitch.md)

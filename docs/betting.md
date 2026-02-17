@@ -351,3 +351,17 @@ Before committing to a cycle:
 ---
 
 **Next:** [Building with AI Agents](building.md)
+
+---
+
+## Navigation
+
+**← Previous:** [Shaping](shaping.md) (How to shape work for AI agents)
+
+**→ Next:** [Building](building.md) (Agent + human workflow)
+
+**📚 Implementation Guides:**
+- [Basecamp Setup](basecamp-implementation.md) - Set up Betting Table
+- [Agent Setup](agent-setup-guide.md) - Create your AI programmer
+
+**🎯 Back to:** [README](../README.md) (Table of contents)

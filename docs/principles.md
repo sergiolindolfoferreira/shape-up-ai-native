@@ -241,3 +241,15 @@ AI changes the SPEED, not the PRINCIPLES:
 ---
 
 **Next:** [How to Shape Work for AI Agents](shaping.md)
+
+---
+
+## Navigation
+
+**← Previous:** [README](../README.md) (Start here)
+
+**→ Next:** [Shaping](shaping.md) (How to shape for AI agents)
+
+**📚 Full Guide:**
+- [Basecamp Setup](basecamp-implementation.md) - How to implement
+- [Agent Setup](agent-setup-guide.md) - Create your AI programmer

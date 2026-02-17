@@ -177,3 +177,7 @@ Or DM reviewer directly if urgent.
 ---
 
 _Last updated: [Date]_
+
+---
+
+**📖 Learn more:** [Basecamp Implementation](../docs/basecamp-implementation.md) | **🎯 Back to:** [README](../README.md)

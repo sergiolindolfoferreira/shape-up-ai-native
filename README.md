@@ -1,6 +1,6 @@
 # Shape Up AI Native
 
-> Adapting Basecamp's Shape Up methodology for AI-native software development teams
+> Complete guide to adapting Basecamp's Shape Up methodology for AI-native software development teams
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
 
@@ -34,123 +34,298 @@ But in 2026, **the game has changed:**
 
 ---
 
+## 🚀 Quick Start: Choose Your Path
+
+### 🆕 New to Shape Up?
+
+**Start here:** Understand the methodology first
+
+1. **[Principles](docs/principles.md)** — What is Shape Up AI Native?
+2. **[Original Shape Up Book](https://basecamp.com/shapeup)** — Read the original (2-3 hours)
+3. Come back and see how it adapts for AI agents
+
+### 🏗️ Ready to Implement?
+
+**Follow this path:** From zero to shipping with AI agents
+
+1. **[Create Your AI Programmer](docs/agent-setup-guide.md)** — Build an AI agent from scratch (Mac mini + OpenClaw + Claude)
+2. **[Set Up Basecamp](docs/basecamp-implementation.md)** — Configure Shape Up workflow in Basecamp
+3. **[Shape Your First Pitch](docs/shaping.md)** — Learn to shape work for AI agents
+4. **[Run Your First Cycle](docs/building.md)** — Agent builds, you review
+5. **[Real Example](examples/performance-dashboard/pitch.md)** — See a complete shaped pitch
+
+### 📖 Using It Already?
+
+**Deep dives and references:**
+
+- **[Shaping Guide](docs/shaping.md)** — Master the art of shaping for AI
+- **[Betting Guide](docs/betting.md)** — Prioritize when agents move fast
+- **[Building Guide](docs/building.md)** — Agent + human collaboration workflow
+- **[Tools Guide](docs/tools.md)** — Basecamp, GitHub, CI/CD setup
+- **[Templates](templates/)** — Copy-paste templates for pitches, scopes, kickoffs
+
+---
+
+## 📚 Complete Documentation
+
+### 🎓 Understanding Shape Up AI Native
+
+**Core concepts and philosophy:**
+
+| Document | What You'll Learn | Time |
+|----------|-------------------|------|
+| **[Principles](docs/principles.md)** | What changes, what stays the same | 10 min |
+| **[Shaping](docs/shaping.md)** | How to shape work for AI agents | 20 min |
+| **[Betting](docs/betting.md)** | How to prioritize when agents move fast | 15 min |
+| **[Building](docs/building.md)** | Agent + human workflow during cycles | 15 min |
+| **[Tools](docs/tools.md)** | Basecamp, GitHub, and tool setup | 10 min |
+
+**Total:** ~70 minutes to understand the full methodology
+
+---
+
+### 🛠️ Implementation Guides
+
+**Step-by-step setup instructions:**
+
+| Guide | What You'll Build | Time |
+|-------|-------------------|------|
+| **[Agent Setup Guide](docs/agent-setup-guide.md)** | Create an AI programmer from scratch | 2 hours |
+| **[Basecamp Implementation](docs/basecamp-implementation.md)** | Configure Shape Up workflow | 30 min |
+
+**Total:** ~2.5 hours to go from zero to ready
+
+**What you'll have:**
+- ✅ Working AI agent on Mac mini
+- ✅ GitHub account + repository access
+- ✅ Basecamp project configured
+- ✅ Ready to shape and ship
+
+---
+
+### 📝 Templates & Examples
+
+**Copy these to start fast:**
+
+| Resource | Use This For | Format |
+|----------|--------------|--------|
+| **[Pitch Template](templates/pitch-template.md)** | Shaping new features | Markdown |
+| **[Scope Template](templates/scope-template.md)** | Breaking work into chunks | Markdown |
+| **[Kickoff Template](templates/cycle-kickoff-template.md)** | Starting a cycle | Markdown |
+| **[Performance Dashboard Example](examples/performance-dashboard/pitch.md)** | Real shaped pitch | Complete |
+
+---
+
+### 📊 Case Studies
+
+**Learn from real implementations:**
+
+- **[Case Studies](docs/case-studies.md)** — How teams use Shape Up AI Native
+- **[This Repository](docs/case-studies.md#creating-this-documentation)** — How Vasco (AI agent) built this documentation
+
+*(More case studies coming as teams share their experiences)*
+
+---
+
 ## 🏢 Who's Using This
 
 **[PILL](https://madebypill.com)** — Software engineering & applied AI company in Portugal
 - 4-person technical team + AI agents
 - Building a real estate management platform
 - Using 1-2 week cycles with continuous PR review
-- Results: TBD (we'll share metrics as we go!)
 
-_Using Shape Up AI Native in your team? [Add your story](CONTRIBUTING.md)!_
+**[Your Company Here?]** — [Share your story](CONTRIBUTING.md)
 
 ---
 
-## 🚀 Key Differences
+## 🔑 Key Differences from Original Shape Up
 
-| Shape Up (2019) | Shape Up AI Native (2026) |
-|-----------------|---------------------------|
-| 6-week cycles | 1-2 week cycles |
-| 1-week cool-down | 1-2 day review period |
-| Team builds | AI agents build, humans review |
-| Ship at end of cycle | Continuous integration + review |
-| Developers write code | Developers validate + deploy |
-| Estimates | Appetite (unchanged!) |
+| Aspect | Shape Up (2019) | Shape Up AI Native (2026) |
+|--------|-----------------|---------------------------|
+| **Cycle length** | 6 weeks | 1-2 weeks |
+| **Cool-down** | 1 week | 1-2 days |
+| **Build speed** | Limited by team | 10-100x faster with agents |
+| **Integration** | End of cycle | Continuous (via PRs) |
+| **Role of humans** | Write code | Review code, deploy |
+| **Bottleneck** | Development capacity | Review capacity |
+| **Shaping importance** | Important | **Critical** (agents amplify mistakes) |
+| **Hill charts** | Track progress | Track scope discovery |
 
 **What stays the same:**
-- ✅ Shaping before building (even more critical!)
+- ✅ Shaping before building
 - ✅ Fixed time, variable scope
 - ✅ Betting, not backlogs
 - ✅ Circuit breaker (kill projects that don't ship)
 - ✅ Appetite-driven development
+- ✅ Team autonomy within boundaries
 
 ---
 
-## 📚 Documentation
+## 💡 How It Works: The Full Cycle
 
-### Core Concepts
-- **[Principles](docs/principles.md)** — What changes, what stays
-- **[Shaping](docs/shaping.md)** — How to shape work for AI agents
-- **[Betting](docs/betting.md)** — Prioritizing when agents move fast
-- **[Building](docs/building.md)** — Agent + human workflow
-- **[Tools](docs/tools.md)** — Basecamp, GitHub, and more
+### 1. 🔨 Shaping (Continuous)
 
-### Practical Guides
-- **[Templates](templates/)** — Pitch, scope, and kickoff templates
-- **[Examples](examples/)** — Real-world case studies
-- **[Case Studies](docs/case-studies.md)** — How teams use this
+**What:** Define problems and rough solutions before committing
+
+**Who:** Senior devs, product leads, founders
+
+**Output:** Shaped pitches ready to bet on
+
+**Guide:** [Shaping for AI Agents](docs/shaping.md)
+
+**Template:** [Pitch Template](templates/pitch-template.md)
+
+**Example:** [Performance Dashboard Pitch](examples/performance-dashboard/pitch.md)
 
 ---
 
-## 💡 Quick Start
+### 2. 🎲 Betting (Start of Cycle)
 
-### 1. Shape (30 min)
-Define:
-- **Problem:** What are we solving?
-- **Appetite:** 1 week? 2 weeks?
-- **Solution:** Rough sketch (breadboard or fat marker)
-- **Boundaries:** What's out of scope?
-- **Rabbit holes:** What could go wrong?
+**What:** Choose what to build next based on review capacity
 
-Use [pitch template](templates/pitch-template.md).
+**Who:** Decision makers (CTO, founders, senior team)
 
-### 2. Bet (Decision)
-At start of cycle:
-- Review shaped pitches
-- Choose what fits capacity
-- **Commit:** No interruptions for cycle duration
+**Time:** 1-2 hours at cycle start
 
-### 3. Build (1-2 weeks)
-- **AI agent:** Implements in branch
-- **Creates PRs:** Daily/continuous
-- **Human reviews:** When ready (non-blocking)
-- **Integration:** Merge approved PRs
-- **Ship:** Deploy when cycle completes
+**Output:** Commitments for the cycle
 
-### 4. Cool-down (1-2 days)
-- Review what shipped
+**Guide:** [Betting When Agents Move Fast](docs/betting.md)
+
+**Key question:** *Can we review this many PRs this cycle?*
+
+---
+
+### 3. 🚀 Building (1-2 Weeks)
+
+**What:** AI agent implements, human reviews and deploys
+
+**Who:** 
+- **Agent:** Writes code, creates PRs
+- **Human:** Reviews, tests, merges, deploys
+
+**Process:**
+1. Agent reads shaped pitch
+2. Creates branch, implements feature
+3. Opens PR with description
+4. Human reviews (async, non-blocking)
+5. Agent responds to feedback
+6. Human merges when satisfied
+7. Repeat until feature complete
+
+**Guide:** [Agent + Human Workflow](docs/building.md)
+
+---
+
+### 4. 🧹 Cool-Down (1-2 Days)
+
+**What:** Review, cleanup, prepare next cycle
+
+**Activities:**
+- Review what shipped (vs. what was bet)
 - Fix critical bugs
-- Prepare next cycle bets
-- Reflect and adjust
+- Refactor small things
+- Shape new pitches
+- Prepare for betting
+
+**Guide:** [Basecamp Implementation](docs/basecamp-implementation.md#step-13-cool-down)
 
 ---
 
-## 🎓 Who is this for?
+## 🎓 Who Should Read This?
 
-- **Software teams** exploring AI-assisted development
-- **CTOs & founders** rethinking development processes
-- **Product managers** adapting to AI velocity
-- **Developers** working with AI coding agents
-- **Anyone** who loved Shape Up and wonders: "Does this still apply?"
+### 👨‍💼 CTOs & Founders
+**Read:** [Principles](docs/principles.md) → [Betting](docs/betting.md) → [Agent Setup Guide](docs/agent-setup-guide.md)
 
-**Answer:** Yes! But adapted.
+**Why:** Understand strategic shift from build capacity to review capacity
+
+### 👨‍💻 Developers
+**Read:** [Building](docs/building.md) → [Shaping](docs/shaping.md) → [Basecamp Implementation](docs/basecamp-implementation.md)
+
+**Why:** Learn new role: reviewer + deployer instead of writer
+
+### 📊 Product Managers
+**Read:** [Shaping](docs/shaping.md) → [Principles](docs/principles.md) → [Examples](examples/performance-dashboard/pitch.md)
+
+**Why:** Shaping becomes MORE critical when agents build fast
+
+### 🏗️ Team Leads
+**Read:** [Agent Setup Guide](docs/agent-setup-guide.md) → [Basecamp Implementation](docs/basecamp-implementation.md) → [Tools](docs/tools.md)
+
+**Why:** Practical setup and team integration
+
+### 🆕 Shape Up Newcomers
+**Read:** [Original Shape Up Book](https://basecamp.com/shapeup) → [Principles](docs/principles.md) → [Shaping](docs/shaping.md)
+
+**Why:** Understand foundation before adaptations
 
 ---
 
 ## 🤝 Contributing
 
-We're building this in the open. Contributions welcome!
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We're building this in the open. Your experiences and insights help everyone!
 
 **Ways to contribute:**
-- Share your AI-native development experiences
-- Submit case studies from your team
-- Improve documentation
-- Add templates and examples
-- Translate to other languages
+- 📖 **Share your experience:** How is Shape Up AI Native working for you?
+- 📊 **Submit case studies:** Real examples from your team
+- 📝 **Improve docs:** Found something unclear?
+- 🌐 **Translate:** Help non-English speakers
+- 🎨 **Add templates:** Share what works for you
+
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for guidelines.
 
 ---
 
 ## 📖 Further Reading
 
-**Original Shape Up:**
-- [Shape Up book](https://basecamp.com/shapeup) (free, online)
-- [Shape Up introduction](https://basecamp.com/shapeup/0.3-chapter-01)
+### Original Shape Up
 
-**AI-Native Development:**
-- [Examples](examples/) from real teams
-- [Case studies](docs/case-studies.md) of successful adaptations
+- **[Shape Up book](https://basecamp.com/shapeup)** — Free, online, ~2 hours
+- **[Introduction](https://basecamp.com/shapeup/0.3-chapter-01)** — Quick overview
+- **[Basecamp blog](https://basecamp.com/how-we-work)** — Additional context
+
+### AI-Native Development
+
+- **[Examples](examples/)** — Real pitches and implementations
+- **[Case Studies](docs/case-studies.md)** — How teams adapt
+
+### Community
+
+- **[GitHub Discussions](https://github.com/sergiolindolfoferreira/shape-up-ai-native/discussions)** — Ask questions, share experiences
+- **[Issues](https://github.com/sergiolindolfoferreira/shape-up-ai-native/issues)** — Report problems, suggest improvements
+
+---
+
+## 🗺️ Navigation Map
+
+```
+README.md (you are here)
+│
+├── Understanding
+│   ├── docs/principles.md           → What changes, what stays
+│   ├── docs/shaping.md              → Shape work for AI agents
+│   ├── docs/betting.md              → Prioritize when fast
+│   ├── docs/building.md             → Agent + human workflow
+│   └── docs/tools.md                → Basecamp + GitHub setup
+│
+├── Implementation
+│   ├── docs/agent-setup-guide.md    → Create AI programmer
+│   ├── docs/basecamp-implementation.md → Set up workflow
+│   └── docs/case-studies.md         → Learn from others
+│
+├── Templates
+│   ├── templates/pitch-template.md  → Shape new features
+│   ├── templates/scope-template.md  → Break work into chunks
+│   └── templates/cycle-kickoff-template.md → Start cycles
+│
+└── Examples
+    └── examples/performance-dashboard/ → Complete real example
+        └── pitch.md
+```
+
+**Quick links:**
+- 🆕 New? → [Principles](docs/principles.md)
+- 🏗️ Ready to build? → [Agent Setup](docs/agent-setup-guide.md) + [Basecamp Setup](docs/basecamp-implementation.md)
+- 📖 Already using? → [Shaping](docs/shaping.md), [Betting](docs/betting.md), [Building](docs/building.md)
 
 ---
 
@@ -164,7 +339,9 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 - **Commercial use** — for any purpose, even commercially
 
 **Under the following terms:**
-- **Attribution** — You must give appropriate credit to Sérgio Lindolfo Ferreira and link to the license.
+- **Attribution** — Give appropriate credit to Sérgio Lindolfo Ferreira and link to the license
+
+Repository code examples (if any): [MIT License](LICENSE)
 
 ---
 
@@ -172,14 +349,18 @@ This work is licensed under a [Creative Commons Attribution 4.0 International Li
 
 **Sérgio Lindolfo Ferreira**
 - 30+ years in software development
-- Founder & CTO of PILL (Portugal) and Borlantrix (Estonia)
+- Founder of [PILL](https://madebypill.com) (Portugal) and [Borlantrix](https://www.borlantrix.com) (Estonia)
 - Early adopter of Shape Up (since 2012)
 - Now exploring AI-native development with coding agents
 
-[LinkedIn](https://linkedin.com/in/sergiolindolfoferreira) • [GitHub](https://github.com/sergiolindolfoferreira)
+**Connect:**
+- [LinkedIn](https://linkedin.com/in/sergiolindolfoferreira)
+- [GitHub](https://github.com/sergiolindolfoferreira)
 
 ---
 
 **Based on the original [Shape Up](https://basecamp.com/shapeup) methodology by Basecamp.**
+
+**Built by:** [Vasco Gama](https://github.com/vasco-gama-dev) (AI agent) + Sérgio Ferreira (human)
 
 Made with ❤️ in Portugal 🇵🇹

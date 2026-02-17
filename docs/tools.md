@@ -497,3 +497,17 @@ repo/
 ---
 
 **Next:** [Case Studies](case-studies.md)
+
+---
+
+## Navigation
+
+**← Previous:** [Building](building.md) (Agent + human workflow)
+
+**📚 Implementation Guides:**
+- [Basecamp Setup](basecamp-implementation.md) - Complete walkthrough
+- [Agent Setup](agent-setup-guide.md) - Mac mini to working agent
+
+**🎯 Back to:** [README](../README.md) (Table of contents)
+
+**🚀 Ready to implement?** Start with [Agent Setup Guide](agent-setup-guide.md)
