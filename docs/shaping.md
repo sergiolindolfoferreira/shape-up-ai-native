@@ -357,6 +357,30 @@ DO NOT:
 
 ---
 
+## Real Example: Pitch in Basecamp
+
+Here's what a well-shaped pitch looks like in practice:
+
+![Basecamp Pitch Example](../assets/basecamp-pitch-example.jpg)
+
+This pitch demonstrates all five key elements:
+
+1. **Problem:** Clear description of user pain (performance visibility)
+2. **Appetite:** 1 week, explicitly stated upfront
+3. **Solution:** Breadboard sketch + workflow description
+4. **Rabbit Holes:** Explicit "what NOT to do" list
+5. **Boundaries:** "No-Gos" section with out-of-scope items
+
+Notice:
+- ✅ Rough enough to allow implementation choices
+- ✅ Detailed enough to prevent wrong direction
+- ✅ Technical risks identified and addressed
+- ✅ Clear success criteria ("Ready to Bet?" checklist)
+
+This pitch is ready to hand to an AI agent for autonomous implementation.
+
+---
+
 ## Shaping Checklist
 
 Before betting on a pitch, verify:
