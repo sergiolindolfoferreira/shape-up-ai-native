@@ -381,3 +381,17 @@ Progress: 50% (2/4 scopes done)
 ---
 
 **Next:** [Tools for AI-Native Shape Up](tools.md)
+
+---
+
+## Navigation
+
+**← Previous:** [Betting](betting.md) (How to prioritize and commit)
+
+**→ Next:** [Tools](tools.md) (Basecamp, GitHub setup)
+
+**📚 Ready to Start?**
+- [Create Your AI Programmer](agent-setup-guide.md) - Complete setup guide
+- [Set Up Basecamp](basecamp-implementation.md) - Configure your workflow
+
+**🎯 Back to:** [README](../README.md) (Table of contents)
