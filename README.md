@@ -116,17 +116,6 @@ But in 2026, **the game has changed:**
 
 ---
 
-### 📊 Case Studies
-
-**Learn from real implementations:**
-
-- **[Case Studies](docs/case-studies.md)** — How teams use Shape Up AI Native
-- **[This Repository](docs/case-studies.md#creating-this-documentation)** — How Vasco (AI agent) built this documentation
-
-*(More case studies coming as teams share their experiences)*
-
----
-
 ## 🏢 Who's Using This
 
 **[PILL](https://madebypill.com)** — Software engineering & applied AI company in Portugal
@@ -286,7 +275,6 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for guidelines.
 ### AI-Native Development
 
 - **[Examples](examples/)** — Real pitches and implementations
-- **[Case Studies](docs/case-studies.md)** — How teams adapt
 
 ### Community
 
@@ -309,8 +297,7 @@ README.md (you are here)
 │
 ├── Implementation
 │   ├── docs/agent-setup-guide.md    → Create AI programmer
-│   ├── docs/basecamp-implementation.md → Set up workflow
-│   └── docs/case-studies.md         → Learn from others
+│   └── docs/basecamp-implementation.md → Set up workflow
 │
 ├── Templates
 │   ├── templates/pitch-template.md  → Shape new features
