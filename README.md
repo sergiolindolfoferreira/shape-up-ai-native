@@ -34,6 +34,69 @@ But in 2026, **the game has changed:**
 
 ---
 
+## 🔄 Workflow at a Glance
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FFE5B4','secondaryColor':'#E3F2FD','tertiaryColor':'#F3E5F5','primaryBorderColor':'#FF6B6B','secondaryBorderColor':'#4ECDC4','tertiaryBorderColor':'#95E1D3'}}}%%
+
+graph TD
+    Start([🎯 Shape Up AI Native Workflow]):::startNode
+    
+    %% SHAPING PHASE
+    Start --> Shaping[🔨 SHAPING<br/>Basecamp]:::shapingNode
+    Shaping --> ShapingWork[Problem Definition<br/>+ Appetite<br/>+ Solution Sketch]:::workNode
+    ShapingWork --> PitchOut[📄 pitch.md]:::artifactNode
+    
+    %% BETTING PHASE
+    PitchOut --> Betting[🎲 BETTING<br/>Basecamp]:::bettingNode
+    Betting --> BettingWork[Review Pitches<br/>+ Commit Resources<br/>+ Assign Teams]:::workNode
+    BettingWork --> ApprovedPitch[✅ Approved Pitch]:::artifactNode
+    
+    %% BUILDING PHASE (Claude Code)
+    ApprovedPitch --> Building[🚀 BUILDING<br/>GitHub + Claude Code]:::buildingNode
+    
+    %% SPEC MODE
+    Building --> SpecMode[📝 SPEC MODE]:::claudeNode
+    SpecMode --> SpecWork[Pitch → Technical Spec<br/>Requirements + Constraints<br/>Architecture Decisions]:::claudeWork
+    SpecWork --> SpecOut[📋 spec.md]:::artifactNode
+    
+    %% PLAN MODE
+    SpecOut --> PlanMode[📋 PLAN MODE]:::claudeNode
+    PlanMode --> PlanWork[Spec → Task Breakdown<br/>Define Scopes<br/>Estimate Complexity]:::claudeWork
+    PlanWork --> PlanOut[📑 plan.md<br/>+ scopes/]:::artifactNode
+    
+    %% IMPLEMENT MODE
+    PlanOut --> ImplMode[💻 IMPLEMENT MODE]:::claudeNode
+    ImplMode --> ImplWork[Plan → Code<br/>TDD + Reviews<br/>Pull Requests]:::claudeWork
+    ImplWork --> ImplOut[✨ Working Features<br/>+ Tests]:::artifactNode
+    
+    %% SHIPPING PHASE
+    ImplOut --> Shipping[📦 SHIPPING<br/>Azure DevOps]:::shippingNode
+    Shipping --> ShipWork[Code Review<br/>+ Merge to Main<br/>+ Deploy Pipeline]:::workNode
+    ShipWork --> Release[🎉 Production Release]:::releaseNode
+    
+    %% Cooldown feedback loop
+    Release -.->|Learnings & Bugs| Shaping
+    
+    %% STYLE DEFINITIONS
+    classDef startNode fill:#4A90E2,stroke:#2E5C8A,stroke-width:3px,color:#fff
+    classDef shapingNode fill:#FF6B6B,stroke:#C92A2A,stroke-width:3px,color:#fff
+    classDef bettingNode fill:#FAB005,stroke:#F08C00,stroke-width:3px,color:#000
+    classDef buildingNode fill:#51CF66,stroke:#2F9E44,stroke-width:3px,color:#fff
+    classDef claudeNode fill:#845EF7,stroke:#5F3DC4,stroke-width:3px,color:#fff
+    classDef shippingNode fill:#FF922B,stroke:#E8590C,stroke-width:3px,color:#fff
+    classDef workNode fill:#E3F2FD,stroke:#64B5F6,stroke-width:2px,color:#000
+    classDef claudeWork fill:#F3E5F5,stroke:#BA68C8,stroke-width:2px,color:#000
+    classDef artifactNode fill:#FFF9DB,stroke:#FFD43B,stroke-width:2px,color:#000
+    classDef releaseNode fill:#69DB7C,stroke:#37B24D,stroke-width:3px,color:#fff
+```
+
+**Key insight:** What Shape Up calls "Building" becomes **3 distinct phases** (Spec → Plan → Implement) when working with AI agents. This gives agents the clarity they need at each step.
+
+**Want the details?** See **[Development Workflow Guide](docs/development-workflow.md)** for the complete step-by-step process.
+
+---
+
 ## 🚀 Quick Start: Choose Your Path
 
 ### 🆕 New to Shape Up?
@@ -78,9 +141,10 @@ But in 2026, **the game has changed:**
 | **[Shaping](docs/shaping.md)** | How to shape work for AI agents | 20 min |
 | **[Betting](docs/betting.md)** | How to prioritize when agents move fast | 15 min |
 | **[Building](docs/building.md)** | Agent + human workflow during cycles | 15 min |
+| **[Development Workflow](docs/development-workflow.md)** | Complete Pitch → Code process (Spec → Plan → Implement) | 30 min |
 | **[Tools](docs/tools.md)** | Basecamp, GitHub, and tool setup | 10 min |
 
-**Total:** ~70 minutes to understand the full methodology
+**Total:** ~100 minutes to understand the full methodology
 
 ---
 
@@ -110,6 +174,9 @@ But in 2026, **the game has changed:**
 | Resource | Use This For | Format |
 |----------|--------------|--------|
 | **[Pitch Template](templates/pitch-template.md)** | Shaping new features | Markdown |
+| **[Spec Template](templates/spec-template.md)** | Pitch → Technical specification | Markdown |
+| **[Plan Template](templates/plan-template.md)** | Spec → Task breakdown | Markdown |
+| **[PR Template](templates/pr-template.md)** | Pull Request descriptions | Markdown |
 | **[Scope Template](templates/scope-template.md)** | Breaking work into chunks | Markdown |
 | **[Kickoff Template](templates/cycle-kickoff-template.md)** | Starting a cycle | Markdown |
 | **[Performance Dashboard Example](examples/performance-dashboard/pitch.md)** | Real shaped pitch | Complete |
@@ -289,19 +356,23 @@ See **[CONTRIBUTING.md](CONTRIBUTING.md)** for guidelines.
 README.md (you are here)
 │
 ├── Understanding
-│   ├── docs/principles.md           → What changes, what stays
-│   ├── docs/shaping.md              → Shape work for AI agents
-│   ├── docs/betting.md              → Prioritize when fast
-│   ├── docs/building.md             → Agent + human workflow
-│   └── docs/tools.md                → Basecamp + GitHub setup
+│   ├── docs/principles.md              → What changes, what stays
+│   ├── docs/shaping.md                 → Shape work for AI agents
+│   ├── docs/betting.md                 → Prioritize when fast
+│   ├── docs/building.md                → Agent + human workflow
+│   ├── docs/development-workflow.md    → Pitch → Code (Spec/Plan/Implement)
+│   └── docs/tools.md                   → Basecamp + GitHub setup
 │
 ├── Implementation
-│   ├── docs/agent-setup-guide.md    → Create AI programmer
+│   ├── docs/agent-setup-guide.md       → Create AI programmer
 │   └── docs/basecamp-implementation.md → Set up workflow
 │
 ├── Templates
-│   ├── templates/pitch-template.md  → Shape new features
-│   ├── templates/scope-template.md  → Break work into chunks
+│   ├── templates/pitch-template.md     → Shape new features
+│   ├── templates/spec-template.md      → Pitch → Technical spec
+│   ├── templates/plan-template.md      → Spec → Task breakdown
+│   ├── templates/pr-template.md        → Pull Request descriptions
+│   ├── templates/scope-template.md     → Break work into chunks
 │   └── templates/cycle-kickoff-template.md → Start cycles
 │
 └── Examples
@@ -313,6 +384,7 @@ README.md (you are here)
 - 🆕 New? → [Principles](docs/principles.md)
 - 🏗️ Ready to build? → [Agent Setup](docs/agent-setup-guide.md) + [Basecamp Setup](docs/basecamp-implementation.md)
 - 📖 Already using? → [Shaping](docs/shaping.md), [Betting](docs/betting.md), [Building](docs/building.md)
+- 💻 Want details? → [Development Workflow](docs/development-workflow.md) (Pitch → Code step-by-step)
 
 ---
 
