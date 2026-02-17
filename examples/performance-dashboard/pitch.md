@@ -1,340 +1,166 @@
-# Performance Dashboard for Property Listings
+# Performance Dashboard - Complete Pitch Example
 
-**Appetite:** 1 week (5 days)
+This is a complete, well-shaped pitch ready to hand to an AI agent.
+
+**Live example:** [View in Basecamp](https://3.basecamp.com/5517580/buckets/46149894/messages/9588362237)
+
+---
+
+## 📋 Pitch: Performance Dashboard
+
+**Appetite:** 1 week
 
 ---
 
 ## Problem
 
-**Current situation:**
-Property managers with 20+ listings can't easily see which properties are performing well. They have to:
-1. Open each listing individually
-2. Check views, inquiries, bookings manually
-3. Compare mentally or on spreadsheet
-4. Takes 30-45 minutes daily
+Users can't quickly identify where performance bottlenecks are in the application. When there's slowness, the support team receives complaints but has no immediate visibility into:
 
-**Specific problem:**
-No overview of performance across all listings. Can't quickly identify:
-- Which listings need attention (low inquiries)
-- Which are performing well (high conversion)
-- Overall portfolio health
+- Which endpoints are slow
+- How many users were affected
+- What the real business impact is
 
-**Affected users:**
-- Property managers with 20+ active listings
-- ~15% of our user base
-- But 40% of revenue (they're power users)
-
-**Why now:**
-- #1 requested feature (23 requests this quarter)
-- Competitive pressure (competitors have this)
-- We're losing larger customers to competitors because of this gap
+Currently, they need to access multiple tools (logs, APM, analytics) to piece together the puzzle. This wastes time and delays resolution of critical problems.
 
 ---
 
-## Appetite
+## Solution (Breadboard)
 
-**Time budget:** 1 week (5 working days)
-
-This is NOT an estimate. We're willing to spend 5 days on this problem.
-
-**Trade-offs accepted:**
-- If scope creeps → cut features to fit 5 days
-- If something is technically hard → simplify or cut
-- We can always add more in v2
-
----
-
-## Solution
-
-### High-Level Approach
-
-Add a new "Performance" tab to the dashboard that shows:
-
-1. **Overview Card** at top
-   - Total views, inquiries, bookings (last 7 days)
-   - Aggregate conversion rate
-   - Clear, big numbers
-
-2. **Listings Table** below
-   - One row per listing
-   - Columns: Name, Photo thumb, Views, Inquiries, Bookings, Conversion %
-   - Sort by any column
-   - Click row → go to listing detail
-
-**Data freshness:** Daily aggregation is fine (not real-time)
-
-### Breadboard
+### Interface principal:
 
 ```
 ┌─────────────────────────────────────────┐
-│ Navigation: [ Dashboard | Listings |   │
-│             [ Calendar | Performance ]  │ ← New tab
-└─────────────────────────────────────────┘
-
-┌─────────────────────────────────────────┐
-│ PERFORMANCE DASHBOARD                   │
+│  Performance Dashboard                   │
 ├─────────────────────────────────────────┤
-│                                         │
-│  ╔═══════════════════════════════════╗ │
-│  ║  OVERVIEW (Last 7 Days)           ║ │
-│  ║                                   ║ │
-│  ║  2,450 views  │ 87 inquiries     ║ │
-│  ║  12 bookings  │ 13.8% conversion ║ │
-│  ╚═══════════════════════════════════╝ │
-│                                         │
-│  ╔═══════════════════════════════════╗ │
-│  ║  TOP PERFORMING LISTINGS          ║ │
-│  ╠═══════╦═══════╦══════════╦════════╣ │
-│  ║ Name  ║ Views ║ Inq. ║ Conv. %  ║ │
-│  ╠═══════╬═══════╬══════════╬════════╣ │
-│  ║ Villa ║  450  ║   23   ║  18.2% ║ │
-│  ║ Apt B ║  380  ║   12   ║  11.5% ║ │
-│  ║ ...   ║  ...  ║  ...   ║  ...   ║ │
-│  ╚═══════╩═══════╩══════════╩════════╝ │
-│                                         │
-│  [Sort by: Views ▼] [Last 7 days ▼]   │
+│                                          │
+│  [Last 24h] [7 days] [30 days]          │
+│                                          │
+│  ┌─────────────────────────────────┐    │
+│  │ Slowest Endpoints               │    │
+│  │                                 │    │
+│  │ GET /api/properties  2.3s 🔴    │    │
+│  │ POST /api/search     1.8s 🟡    │    │
+│  │ GET /api/users       0.8s 🟢    │    │
+│  └─────────────────────────────────┘    │
+│                                          │
+│  ┌─────────────────────────────────┐    │
+│  │ Error Rate Trend                │    │
+│  │        ▁▂▃█▆▄▃▂▁                │    │
+│  │ 0.5%  ─────────────  2.1%       │    │
+│  └─────────────────────────────────┘    │
+│                                          │
+│  Affected Users: 247                    │
+│  Business Impact: €1,240 lost revenue   │
 └─────────────────────────────────────────┘
-
-Click listing row → Existing listing detail page
 ```
 
-### Key Elements
+### Flow:
 
-1. **Performance Tab**
-   - New navigation item
-   - Visible to all users
-   - Shows overview + table
+1. Dashboard automatically loads data from last 24h
+2. User can change period (7d, 30d)
+3. Clicking an endpoint shows details (stack traces, examples)
+4. Automatic alert when threshold exceeded
 
-2. **Overview Card**
-   - 4 key metrics (views, inquiries, bookings, conversion %)
-   - Always last 7 days for v1
-   - Big, clear numbers
+### Backend:
 
-3. **Listings Table**
-   - One row per active listing
-   - Sortable columns (default: highest conversion first)
-   - Click row → navigate to listing detail
-   - Shows listing photo thumbnail
-
-4. **Data Pipeline**
-   - Daily aggregation job (runs at 2 AM)
-   - Stores results in `listing_stats` table
-   - No real-time queries (too expensive)
+- Leverage existing APM data
+- New API endpoint: `GET /api/performance/summary`
+- 5-minute cache (doesn't need real-time)
+- Simple aggregation (average, p95, count)
 
 ---
 
-## Rabbit Holes
+## Rabbit Holes (what NOT to do)
 
-### Technical Unknowns
+❌ **Don't build metrics system from scratch**
+   → Use data we already have in APM/existing logs
 
-- **Performance data location**
-  - Analytics in MongoDB (page_views collection)
-  - Listings in PostgreSQL (listings table)
-  - **Mitigation:** Daily aggregation job copies data to PostgreSQL
-    - Agent can implement this (we have similar jobs already)
+❌ **Don't create complete alerting system**
+   → Just show data, alerting comes later
 
-- **Conversion rate calculation**
-  - Inquiries → bookings is not 1:1 (inquiry might lead to booking weeks later)
-  - **Mitigation:** Simple approach for v1: bookings / inquiries in same 7-day window
-    - Not perfect but "good enough" for dashboard overview
+❌ **Don't do real-time updates**
+   → Manual refresh or 5min cache is sufficient
 
-### Scope Creep Risks
-
-- **Custom date ranges:** Users will want "last 30 days", "this month", etc.
-  - **Decision:** v1 = hard-coded "last 7 days" only
-  - Add date picker in v2 if needed
-
-- **Comparison periods:** "Compare to previous week"
-  - **Decision:** OUT for v1 (adds complexity)
-
-- **Export to CSV/Excel:**
-  - **Decision:** OUT for v1 (can be v2 feature)
-
-- **Filtering by property type, location, etc.:**
-  - **Decision:** v1 = just sorting, no filters
+❌ **Don't optimize performance queries**
+   → That's a separate project, here we just show what we have
 
 ---
 
-## No Gos
+## No-Gos (out of scope)
 
-**Explicitly OUT of scope for this cycle:**
+🚫 **History > 30 days**
+   - Old data isn't critical for immediate troubleshooting
+   - Adds storage complexity
 
-- ❌ Custom date ranges (just last 7 days)
-- ❌ Comparison to previous periods
-- ❌ Export functionality (CSV, PDF, Excel)
-- ❌ Filtering by property attributes
-- ❌ Graphs/charts (just numbers for v1)
-- ❌ Email notifications ("Your listing X is underperforming")
-- ❌ Real-time data (daily aggregation is fine)
-- ❌ Drill-down analytics (just high-level for now)
+🚫 **Drill-down to individual logs**
+   - Dashboard is overview, not deep debugging tool
+   - Links to existing tools (Sentry, DataDog) are enough
 
-**If users ask:** Politely acknowledge and note for future consideration.
+🚫 **Environment comparison**
+   - Focus on production only
+   - Staging/dev aren't priority for this cycle
 
----
-
-## Success Criteria
-
-**This feature is successful if:**
-
-- [ ] Property manager can see overview metrics in <2 clicks from homepage
-- [ ] Table loads in <2 seconds with 100 listings
-- [ ] Sorting works on all columns
-- [ ] Clicking listing row navigates to detail page
-- [ ] Data is accurate (matches detail pages)
-- [ ] Works on mobile (responsive layout)
-
-**Metric to track post-launch:**
-- % of power users (20+ listings) who use Performance tab weekly
-- Target: >50% within 2 weeks of launch
-
----
-
-## Data/Integration Notes
-
-### Data Flow
-
-```
-1. Raw analytics data
-   Location: MongoDB (analytics_db.page_views)
-   Fields: listing_id, viewed_at, user_id
-
-2. Inquiry data
-   Location: PostgreSQL (inquiries table)
-   Fields: listing_id, created_at, status
-
-3. Booking data
-   Location: PostgreSQL (bookings table)
-   Fields: listing_id, booked_at, inquiry_id
-
-4. Daily aggregation (runs 2 AM UTC)
-   → Creates/updates: PostgreSQL (listing_stats table)
-   Schema:
-     - listing_id (FK to listings)
-     - date (DATE)
-     - views (INT)
-     - inquiries (INT)
-     - bookings (INT)
-     - conversion_rate (DECIMAL)
-
-5. Dashboard queries
-   → Only read from listing_stats (fast!)
-   → JOIN with listings for name, photo
-```
-
-### Example API Response
-
-**GET /api/dashboard/performance**
-
-```json
-{
-  "overview": {
-    "period": "last_7_days",
-    "startDate": "2026-02-10",
-    "endDate": "2026-02-16",
-    "totalViews": 2450,
-    "totalInquiries": 87,
-    "totalBookings": 12,
-    "conversionRate": 0.138
-  },
-  "listings": [
-    {
-      "id": 123,
-      "name": "Villa Marina",
-      "photoThumbUrl": "https://cdn.../thumb.jpg",
-      "views": 450,
-      "inquiries": 23,
-      "bookings": 5,
-      "conversionRate": 0.182
-    },
-    {
-      "id": 124,
-      "name": "Cozy Apartment Downtown",
-      "photoThumbUrl": "https://cdn.../thumb.jpg",
-      "views": 380,
-      "inquiries": 12,
-      "bookings": 2,
-      "conversionRate": 0.115
-    }
-  ]
-}
-```
-
-### Integration Points
-
-**Frontend:**
-- New route: `/dashboard/performance`
-- Uses existing auth guard (must be logged in)
-- Uses existing layout component
-- Add tab to main navigation
-
-**Backend:**
-- New controller: `PerformanceDashboardController`
-- New route: `GET /api/dashboard/performance`
-- Reuses existing auth middleware
-- New background job: `DailyStatsAggregationJob` (runs via cron)
-
-**Database:**
-- New table: `listing_stats`
-- Indexes needed: `(listing_id, date)`, `(date)`
-
-### DO NOT Over-Engineer
-
-**Agent should NOT:**
-- Add caching layer (not needed yet, data changes daily)
-- Implement real-time updates (daily is fine)
-- Add GraphQL endpoint (REST is fine)
-- Create separate admin panel (reuse existing dashboard)
-- Optimize prematurely (query is simple JOIN, will be fast)
-
----
-
-## Open Questions
-
-- [x] **Where does inquiry → booking attribution happen?**
-  - Answer: Same 7-day window for v1 (simple approach)
-
-- [x] **What if listing has zero views?**
-  - Answer: Still show in table, conversion = 0% (or N/A)
-
-- [x] **Mobile layout?**
-  - Answer: Stack cards vertically, table becomes scrollable
-
-- [x] **Loading state?**
-  - Answer: Skeleton loaders (use existing component)
-
-**All critical questions resolved → ready to bet.**
+🚫 **Per-user threshold customization**
+   - Fixed values for entire team
+   - Advanced configuration waits for V2
 
 ---
 
 ## Ready to Bet?
 
-- [x] Problem is clear and specific (property managers, 30 min daily)
-- [x] Appetite is set (1 week / 5 days)
-- [x] Solution is rough but solved (overview + table)
-- [x] Rabbit holes identified and mitigated (aggregation job, simple conversion calc)
-- [x] Boundaries defined (No Gos listed above)
-- [x] Success criteria are measurable (load time, usage %)
-- [x] Technical integration is clear (data flow diagram)
-- [x] No blocking open questions (all resolved)
+✅ Problem is clear and urgent  
+✅ Solution is rough but solvable  
+✅ Rabbit holes identified and addressed  
+✅ Boundaries well defined  
+✅ 1 week appetite is realistic  
 
-**✅ READY FOR BETTING TABLE**
+**Next step:** Bet on next cycle and start working!
 
 ---
 
-## Notes
+## Why This Works for AI Agents
 
-**Design reference:**
-- Similar to existing "Analytics" tab (consistent UI)
-- Use existing table component (don't rebuild)
-- Use existing card component for overview
+This pitch demonstrates key properties for autonomous agent execution:
 
-**Post-launch ideas** (not for this cycle):
-- Custom date ranges (v2)
-- Comparison mode (v2)
-- Export functionality (v2)
-- Performance alerts ("Listing X dropped 50% in inquiries")
-- Graphs/trends over time
+### 1. Clear Problem → No Feature Creep
+
+The agent knows exactly what user pain we're solving. Won't add "nice to have" features that bloat scope.
+
+### 2. Fixed Appetite → No Infinite Optimization
+
+Agent has 1 week. Won't spend 3 days bikeshedding color schemes or optimizing queries that work fine.
+
+### 3. Rough Solution → Room for Implementation
+
+Breadboard shows structure, not pixel-perfect mockups. Agent can make implementation decisions within boundaries.
+
+### 4. Rabbit Holes → Avoids Technical Dead-Ends
+
+"Don't build metrics from scratch" prevents agent from attempting complex infrastructure that's out of scope.
+
+### 5. No-Gos → Clear Boundaries
+
+Agent knows what's explicitly out. Won't implement 90-day history or per-user settings thinking they're required.
 
 ---
 
-_Shaped by: Sergio & Vasco | Date: 2026-02-17_
+## How to Use This Template
+
+When shaping your own pitch:
+
+1. **Copy this structure** (Problem, Solution, Rabbit Holes, No-Gos)
+2. **Replace content** with your specific feature
+3. **Set appetite** (1-2 days, 1 week, or 2 weeks max)
+4. **Draw breadboard** (ASCII art or hand sketch)
+5. **Identify risks** (what could derail this?)
+6. **Define boundaries** (what's explicitly out?)
+7. **Verify checklist** (see [Shaping Checklist](../../docs/shaping.md#shaping-checklist))
+
+**Then:** Post in Basecamp, bet on it, assign to agent, ship it! 🚀
+
+---
+
+**See also:**
+- [Shaping Guide](../../docs/shaping.md)
+- [Betting Guide](../../docs/betting.md)
+- [Building Guide](../../docs/building.md)
