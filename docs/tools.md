@@ -23,6 +23,140 @@
 
 **Alternative:** Linear, Notion, or any project tool with kanban
 
+---
+
+## Basecamp Setup Example
+
+### Shaping Project
+
+Create a **private project** called **"🔨 Shaping"** with these components:
+
+![Basecamp Shaping Project Overview](../assets/basecamp-shaping-overview.jpg)
+
+**Components (in order):**
+
+1. **Pitches** (Message Board)
+   - Post shaped pitches here
+   - One post = one complete pitch
+   - Use [pitch template](../templates/pitch-template.md)
+
+2. **Betting Table** (Card Table)
+   - Visual workflow for betting decisions
+   - Move cards between columns
+   - See detailed setup below
+
+3. **Docs & Files**
+   - Store pitch templates
+   - Keep reference materials
+   - Upload relevant documents
+
+4. **Chat** (Campfire)
+   - Quick discussions during shaping
+   - Async communication
+   - Ask questions without ceremony
+
+**Privacy:** Keep this project **private** (only shapers access)
+
+---
+
+### Betting Table Setup
+
+The **Betting Table** is a Card Table (Kanban) for managing the betting workflow:
+
+![Basecamp Betting Table](../assets/basecamp-betting-table.jpg)
+
+**Columns:**
+
+1. **To Shape** (left)
+   - Raw ideas that need shaping
+   - Not ready for betting yet
+   - Unstructured, early-stage
+
+2. **Shaped** (center-left)
+   - Pitches ready to bet on
+   - Problem defined, appetite set
+   - Solution roughed out
+   - Rabbit holes identified
+
+3. **In Progress** (center)
+   - Current cycle work
+   - Reused every cycle (don't create "Cycle 1", "Cycle 2", etc.)
+   - Shows what's being built NOW
+
+4. **DONE** (right side)
+   - Shipped features
+   - Completed and deployed
+   - Historical record
+
+5. **NOT NOW** (far right)
+   - Declined pitches
+   - Backburner ideas
+   - Maybe revisit later
+
+**Workflow:**
+
+```
+New idea → To Shape
+         ↓ (after shaping)
+      Shaped
+         ↓ (betting decision)
+    In Progress  OR  NOT NOW
+         ↓ (after shipping)
+      DONE
+```
+
+**Key Principle:** 
+- **Don't create columns per cycle** (Cycle 1, Cycle 2, etc.)
+- **Reuse "In Progress"** for every cycle
+- Track cycle history in **separate Projects**, not here
+
+---
+
+### Cycle Projects
+
+For each cycle, create a **new project**:
+
+**Naming:** `🚀 Cycle N - [Feature Name]`
+
+**Examples:**
+- `🚀 Cycle 1 - Dashboard Performance`
+- `🚀 Cycle 2 - CSV Export`
+
+**Inside each Cycle Project:**
+
+1. **Message Board: "Kickoff"**
+   - Post the pitch
+   - Add context and scope
+   - Link to shaped pitch from Shaping project
+
+2. **To-Do Lists** (one per scope)
+   - Discovered during work, not upfront
+   - Keep items high-level
+   - Example:
+     ```
+     Overview Card:
+     - [ ] API endpoint implemented
+     - [ ] Frontend component built
+     - [ ] Tests passing
+     - [ ] PR merged
+     ```
+
+3. **Hill Chart** (optional)
+   - Track scope progress
+   - Uphill = figuring it out
+   - Downhill = executing
+
+4. **Campfire**
+   - Quick updates
+   - "PR #45 ready for review"
+   - Async communication during cycle
+
+**After cycle ends:**
+- Archive the project (keeps history)
+- Start fresh with next cycle
+
+---
+
 ### 2. **GitHub** (Building + Review)
 
 **Why GitHub:**
