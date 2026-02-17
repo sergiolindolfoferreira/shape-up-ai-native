@@ -138,40 +138,56 @@ openclaw --version
 
 ---
 
-### Step 4: Get Anthropic API Key
+### Step 4: Get Authentication Token
 
-**Option A: Use Existing Account (Recommended)**
+**Option A: Use Claude Code Auth Token** (Recommended - how this guide was created)
 
-If you already have an Anthropic account with a monthly plan:
+If you already have a Claude account (e.g., Claude Code):
 
-1. Go to https://console.anthropic.com/
-2. Log in to your existing account
-3. Go to **Settings → API Keys**
-4. Use your existing token **OR** create new key: **"OpenClaw Agent"**
-5. Copy the key (starts with `sk-ant-...`)
-6. **Save it securely** (you'll need it next)
+1. On the Mac mini, open browser
+2. Go to https://claude.ai (or your Claude interface)
+3. **Log in with your existing Claude account**
+4. Generate authentication token:
+   - Settings → API/Developer
+   - Or use your existing token
+5. **Copy the token** (starts with `sk-ant-...`)
+6. Save it securely (you'll need it next)
 
-**Benefit:** Agent uses your existing plan/credits. No separate billing.
+**Benefit:** Uses your existing Claude subscription. No separate API billing.
+
+**This is how Vasco (the agent that created this documentation) was set up.**
 
 ---
 
-**Option B: Create New Account**
+**Option B: Create Anthropic API Key**
 
-If you want separate billing for the agent:
+For dedicated API access:
 
 1. Go to https://console.anthropic.com/
-2. Sign up with new email
+2. Sign up or log in
 3. Go to **Settings → API Keys**
 4. Create new key: **"OpenClaw Agent"**
 5. Copy the key (starts with `sk-ant-...`)
-6. Set up separate billing
+6. Set up billing if needed
+
+**Benefit:** Dedicated API access with separate usage tracking.
 
 ---
 
-**Pricing (as of 2026):**
+**Option C: Use Other LLM Providers**
+
+OpenClaw supports multiple providers:
+- **OpenAI:** GPT-4, GPT-4 Turbo
+- **Other providers:** Check OpenClaw documentation
+
+Configure via `openclaw config` with your preferred provider.
+
+---
+
+**Pricing (Anthropic, as of 2026):**
 - Claude Sonnet 4.5: ~$3 per million input tokens
 - Typical usage: $20-200/month depending on workload
-- Monitor usage in Anthropic console
+- Monitor usage in Claude.ai or Anthropic console
 
 ---
 
@@ -182,10 +198,22 @@ If you want separate billing for the agent:
 openclaw config init
 
 # You'll be prompted for:
-# - Anthropic API key (paste the key from step 4)
+# - Authentication token (paste token from step 4)
+#   → If using Claude Code: paste your auth token
+#   → If using API Key: paste API key
 # - Default model (choose: claude-sonnet-4-5)
 # - Agent name (e.g., "Vasco")
 # - Workspace directory (default: ~/.openclaw/workspace)
+```
+
+**Example (using Claude Code auth token):**
+```bash
+$ openclaw config init
+? Authentication token: sk-ant-[your-token-here]
+? Default model: claude-sonnet-4-5
+? Agent name: Vasco
+? Workspace: ~/.openclaw/workspace
+✓ Configuration saved
 ```
 
 **Config file location:** `~/.openclaw/config.json`
