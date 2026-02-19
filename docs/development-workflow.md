@@ -66,6 +66,265 @@ This additional structure gives AI agents the **incremental clarity** they need 
 
 ---
 
+## Workflow Variants
+
+This guide presents the core workflow, but teams adapt it to their needs. Here are two common variants:
+
+### Variant A: Multiple PRs per Feature (Flexible)
+
+**Strategy:** Open PR after each scope completes
+- ✅ Faster feedback loop
+- ✅ Scopes can be reviewed in parallel
+- ❌ More overhead (multiple PR reviews)
+- ❌ Risk of merge conflicts
+
+**Best for:** Large features (5+ scopes), distributed teams, long cycles
+
+### Variant B: Single PR per Feature (Strict Gates)
+
+**Strategy:** Commit+push per phase, single PR at end
+- ✅ Less review overhead
+- ✅ Complete feature review
+- ✅ Enforces quality gates
+- ❌ Longer feedback cycle
+
+**Best for:** Small-medium features (1-4 scopes), tight teams, quality-critical projects
+
+---
+
+## Workflow Variant B: Strict Gates (Recommended for Quality-Critical Teams)
+
+Some teams need tighter control over the development process. This variant adds **mandatory approval gates** between phases and consolidates reviews into a single PR.
+
+### Key Differences
+
+| Aspect | Standard Workflow | Strict Gates Variant |
+|--------|-------------------|----------------------|
+| **PR Strategy** | PR per scope | Single PR at end |
+| **Code Review** | Before PR | Before each commit |
+| **Phase Gates** | Soft (recommended) | Hard (mandatory) |
+| **Approval** | Implicit | Explicit required |
+
+### The Strict Workflow
+
+```mermaid
+graph TD
+    A[SHAPING: Pitch Created] --> B[BETTING: Pitch Approved]
+    B --> C[SPEC Phase: Create Spec]
+    C --> D{Gate 1: Spec Review}
+    D -->|Changes Needed| C
+    D -->|Approved| E[PLAN Phase: Create Plan]
+    E --> F{Gate 2: Plan Review}
+    F -->|Changes Needed| E
+    F -->|Approved| G[IMPLEMENT Phase: Build]
+    G --> H[Code Review Before Commit]
+    H -->|Issues Found| G
+    H -->|Clean| I[Commit + Push]
+    I --> J{More Work?}
+    J -->|Yes| G
+    J -->|No| K[Create Single PR]
+    K --> L{Gate 3: PR Review}
+    L -->|Changes Needed| G
+    L -->|Approved| M[Merge to Main]
+    M --> N[COMPLETE]
+    
+    style D fill:#ff9999
+    style F fill:#ff9999
+    style L fill:#ff9999
+```
+
+### Gate 1: Spec Approval (Mandatory)
+
+**Agent creates spec → Human reviews → Explicit approval required**
+
+**Agent behavior:**
+```
+✅ Spec created: _specs/performance-dashboard.md
+
+Please review the spec. I will wait for explicit approval before 
+proceeding to planning phase.
+
+Reply with "approved" or "approved, proceed to plan" when ready.
+```
+
+**Agent STOPS and WAITS. Does NOT proceed to planning automatically.**
+
+**Human responses:**
+- ✅ `"Approved, proceed to plan"` → Agent continues
+- ⚠️ `"Change X, then proceed"` → Agent edits spec → continues
+- ❌ `"Approved"` (without "proceed") → Agent acknowledges but waits for explicit "proceed to plan"
+
+**Why this matters:**
+- Prevents scope creep early
+- Ensures technical approach is sound
+- Catches misunderstandings before code is written
+
+---
+
+### Gate 2: Plan Approval (Mandatory)
+
+**Agent creates plan → Human reviews → Explicit approval required**
+
+**Agent behavior:**
+```
+✅ Plan created: _plans/performance-dashboard.md
+
+Breakdown:
+- Scope 1: OverviewCard (4h)
+- Scope 2: ListingsTable (6h)  
+- Scope 3: API + Integration (4h)
+
+Total estimated: 14 hours (1.5 days)
+
+Please review. I will wait for explicit approval before starting 
+implementation.
+
+Reply with "approved, start implementation" when ready.
+```
+
+**Agent STOPS and WAITS. Does NOT start coding automatically.**
+
+**Human responses:**
+- ✅ `"Approved, start implementation"` → Agent begins coding
+- ⚠️ `"Split Scope 3 into two scopes, then start"` → Agent adjusts → begins
+- ❌ `"Looks good"` (without "start") → Agent acknowledges but waits for explicit "start implementation"
+
+**Why this matters:**
+- Validates effort estimates
+- Confirms scope independence
+- Identifies risks before investment
+
+---
+
+### Incremental Implementation with Code Review
+
+**For each component/module:**
+
+1. **Agent implements** (TDD: tests first, then code)
+2. **Agent runs `/code-review`** automatically before commit
+3. **Agent fixes** any issues found (a11y + quality)
+4. **Agent commits** with semantic message
+5. **Agent pushes** to remote
+6. **Repeat** for next component
+
+**Agent behavior:**
+```
+✅ OverviewCard component complete
+   Tests: 4 passed
+
+Running code review...
+
+🟡 Found 2 moderate issues:
+- Add aria-label to icon
+- Extract magic number to constant
+
+Fixing issues...
+
+✅ Issues resolved
+   Re-running tests: 4 passed
+
+Committing:
+✨ feat: Add OverviewCard component for performance dashboard
+
+Pushed to claude/feature/performance-dashboard
+
+Next: Scope 2 (ListingsTable)
+```
+
+**Key difference:** Code review happens **before each commit**, not just before PR. This ensures every commit is clean.
+
+---
+
+### Gate 3: Final PR Review (Mandatory)
+
+**All scopes complete → Agent creates single PR → Human reviews → Merge**
+
+**PR contains:**
+- All spec phases (SPEC + PLAN + IMPLEMENT)
+- All commits (one per component/module)
+- Complete feature (all scopes)
+
+**Agent behavior:**
+```
+✅ All scopes complete!
+
+Commits:
+- ✨ feat: Add OverviewCard component
+- ✨ feat: Add ListingsTable component
+- ✨ feat: Add performance API endpoint
+- ✨ feat: Integrate components into performance page
+
+Creating PR...
+
+PR #123 created: "Performance Dashboard"
+https://github.com/.../pull/123
+
+Ready for final review. Merge when approved.
+```
+
+**Human reviews entire feature as one unit:**
+- Does it match the pitch?
+- Do all scopes work together?
+- Is it ready to ship?
+
+**After merge → Workflow complete**
+
+---
+
+### Strict Variant: Complete Example
+
+**Feature:** Performance Dashboard (14 hours estimated)
+
+**Timeline:**
+
+```
+Day 1:
+09:00 - Agent creates spec
+09:30 - 🔴 GATE 1: Human reviews spec
+10:00 - Human: "Approved, proceed to plan"
+10:00 - Agent creates plan (3 scopes)
+10:30 - 🔴 GATE 2: Human reviews plan
+11:00 - Human: "Approved, start implementation"
+11:00 - Agent: Scope 1 (OverviewCard)
+        → Implements → /code-review → Fixes → Commit → Push
+14:00 - Agent: Scope 2 (ListingsTable)
+        → Implements → /code-review → Fixes → Commit → Push
+
+Day 2:
+09:00 - Agent: Scope 3 (API + Integration)
+        → Implements → /code-review → Fixes → Commit → Push
+12:00 - Agent creates single PR with all 3 scopes
+12:30 - 🔴 GATE 3: Human reviews complete PR
+13:00 - Human: Requests 1 change (loading state)
+13:30 - Agent: Implements change → /code-review → Commit → Push
+14:00 - Human: Approves and merges PR
+14:01 - ✅ Feature complete in main branch
+```
+
+**Total time:** 1.5 days (on appetite)
+**Gates enforced:** 3 (Spec, Plan, PR)
+**PRs created:** 1 (entire feature)
+**Code reviews:** 4 (3 incremental + 1 final)
+
+---
+
+### When to Use Strict Variant
+
+**✅ Use strict gates when:**
+- Quality is critical (healthcare, finance, security)
+- Team is small (2-4 people, tight coordination)
+- Features are small-medium (1-4 scopes, 1-3 days)
+- You have time for synchronous reviews
+- Mistakes are costly to fix post-merge
+
+**❌ Don't use strict gates when:**
+- Team is distributed (async reviews needed)
+- Features are large (5+ scopes, 1+ weeks)
+- Speed matters more than perfection
+- Developers are experienced (can self-regulate)
+
+---
+
 ## Phase 1: From Pitch to Spec
 
 **Goal:** Transform a shaped pitch into a detailed technical specification that an AI agent can execute.
