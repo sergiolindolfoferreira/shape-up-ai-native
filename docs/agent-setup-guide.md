@@ -723,7 +723,133 @@ openclaw chat
 
 ---
 
-## Part 8: Maintenance
+## Part 8: Database Access (Optional)
+
+**Enable your agent to debug data issues independently.**
+
+### Why Database Access?
+
+When bugs involve database state (missing records, incorrect counts, data inconsistencies), agents traditionally need humans to run manual SQL queries. With direct database access via read-only replicas, agents can:
+
+- ✅ Diagnose bugs 4x faster (15 mins vs 2-4 hours)
+- ✅ Identify root causes independently
+- ✅ Test fixes before implementation
+- ✅ No production risk (read-only replicas)
+
+**Example:** Dashboard showing 0 new signups, but customer reports are positive. Agent queries replica, finds 127 users exist but metrics job isn't running. Fix identified in 5 minutes.
+
+---
+
+### Quick Setup
+
+**1. Create Read-Only Replica:**
+
+Azure SQL:
+```bash
+# In Azure Portal
+SQL Database → Geo-replication → Add replica
+```
+
+PostgreSQL/MySQL:
+```bash
+# RDS Read Replica, Cloud SQL Replica, or self-hosted replication
+```
+
+**2. Install Database Drivers:**
+
+```bash
+# For Azure SQL
+brew install unixodbc
+HOMEBREW_NO_ENV_FILTERING=1 ACCEPT_EULA=y brew install msodbcsql18
+
+# For PostgreSQL
+brew install postgresql
+
+# For MySQL
+brew install mysql
+
+# Python library
+pip3 install pyodbc  # or psycopg2 / mysql-connector-python
+```
+
+**3. Create Read-Only User:**
+
+```sql
+-- Azure SQL example
+USE [YourDatabase];
+CREATE USER [AgentReadOnly] WITH PASSWORD = 'strong_password';
+ALTER ROLE db_datareader ADD MEMBER [AgentReadOnly];
+DENY INSERT, UPDATE, DELETE, ALTER, CREATE, DROP TO [AgentReadOnly];
+```
+
+**4. Configure Agent:**
+
+Store credentials in `~/.openclaw/workspace/.db-credentials.md` (add to `.gitignore`!)
+
+**5. Add Helper Script:**
+
+Copy `db_helper.py` template from detailed guide (see below).
+
+---
+
+### Usage in Debugging
+
+**Agent workflow:**
+
+1. **Bug reported:** "Dashboard shows incorrect count"
+2. **Agent queries replica:**
+   ```python
+   from db_helper import query_prod
+   rows = query_prod("SELECT COUNT(*) FROM users WHERE status = 'active'")
+   ```
+3. **Compares with dashboard query:**
+   ```python
+   metrics = query_prod("SELECT signup_count FROM daily_metrics")
+   ```
+4. **Identifies root cause:** Job not running
+5. **Proposes fix:** Restart job + backfill metrics
+6. **Creates PR** with fix in code
+
+**Time saved:** 2-4 hours → 15 minutes
+
+---
+
+### Security Best Practices
+
+✅ **DO:**
+- Use read-only replicas for production diagnosis
+- Test fixes in development databases
+- Store credentials in `.gitignore`d files
+- Use parameterized queries (prevent SQL injection)
+
+❌ **DON'T:**
+- Write to production replicas (blocked by user permissions)
+- Commit credentials to git
+- Run expensive queries (use LIMIT/TOP)
+- Bypass code review (all fixes via PR)
+
+---
+
+### Complete Guide
+
+**For detailed setup instructions, see:**
+→ [**Agent Database Access Guide**](agent-database-access.md)
+
+Covers:
+- Multi-database support (Azure SQL, PostgreSQL, MySQL)
+- Complete security configuration
+- Python helper script template
+- Troubleshooting guide
+- Real-world ROI calculations
+
+**Skip this section if:**
+- Your agent doesn't work on data bugs
+- You prefer manual SQL queries
+- Your data is sensitive (though replicas are safe)
+
+---
+
+## Part 9: Maintenance
 
 ### Monitoring Agent Activity
 
@@ -784,7 +910,7 @@ gh auth status
 
 ---
 
-## Part 9: Scaling Up
+## Part 10: Scaling Up
 
 ### Adding More Agents
 
@@ -920,6 +1046,7 @@ This guide is based on **Vasco Gama**, a real AI programming agent created using
 
 - **OpenClaw Documentation:** https://docs.openclaw.ai
 - **Basecamp Implementation:** [basecamp-implementation.md](basecamp-implementation.md)
+- **Agent Database Access:** [agent-database-access.md](agent-database-access.md) - Enable autonomous debugging
 - **Shape Up Book:** https://basecamp.com/shapeup
 - **This Repository:** Example of agent-built documentation
 
