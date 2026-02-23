@@ -2,7 +2,7 @@
 
 **Purpose:** Enable AI agents to diagnose data-related bugs independently using read-only database replicas.
 
-**Status:** Production-ready pattern used by PILL
+**Status:** Production-ready pattern used by ExampleCompany
 
 ---
 
@@ -626,4 +626,4 @@ Agent can:
 
 Have improvements to this guide? Open a PR!
 
-This is a living document based on real-world use at **[PILL](https://madebypill.com)** with Shape Up + AI Native methodology.
+This is a living document based on real-world use at **[ExampleCompany](https://example-company.com)** with Shape Up + AI Native methodology.

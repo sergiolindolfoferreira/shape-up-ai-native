@@ -185,7 +185,7 @@ graph TD
 
 ## 🏢 Who's Using This
 
-**[PILL](https://madebypill.com)** — Software engineering & applied AI company in Portugal
+**[ExampleCompany](https://example-company.com)** — Software engineering & applied AI company in Portugal
 - 4-person technical team + AI agents
 - Building a real estate management platform
 - Using 1-2 week cycles with continuous PR review
@@ -408,7 +408,7 @@ Repository code examples (if any): [MIT License](LICENSE)
 
 **Sérgio Lindolfo Ferreira**
 - 30+ years in software development
-- Founder of [PILL](https://madebypill.com) (Portugal) and [Borlantrix](https://www.borlantrix.com) (Estonia)
+- Founder of [ExampleCompany](https://example-company.com) (Portugal) and [ProductCompany](https://www.product-company.com) (Estonia)
 - Early adopter of Shape Up (since 2012)
 - Now exploring AI-native development with coding agents
 

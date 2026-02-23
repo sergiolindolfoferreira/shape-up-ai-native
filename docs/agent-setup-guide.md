@@ -1011,7 +1011,7 @@ This guide is based on **Vasco Gama**, a real AI programming agent created using
 - **Hardware:** Mac mini M2
 - **Runtime:** OpenClaw + Claude Sonnet 4.5
 - **Accounts:** your-agent@gmail.com, vasco-gama-dev (GitHub)
-- **Access:** MADE-BY-PILL (org), Borlantrix (org), DEVELOPERS (Basecamp)
+- **Access:** your-organization (org), ProductCompany (org), your-basecamp-account
 
 **What Vasco built:**
 - Complete Shape Up AI Native documentation (this repo!)
