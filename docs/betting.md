@@ -207,7 +207,7 @@ Cycle Pre-Launch (1 week):
 
 **Why it fails:** Scope creeps indefinitely
 
-**Fix:** Every bet has explicit appetite (1-2 days, 1 week, 2 weeks max)
+**Fix:** Every bet has explicit appetite using the AI-native scale (XS / S / M / L / XL). See [Shaping → Appetite](shaping.md#2-appetite) for the full table.
 
 ### ❌ Hidden Backlog
 
@@ -338,7 +338,7 @@ If >20%:
 
 Before committing to a cycle:
 
-- [ ] Each bet has clear appetite (days/weeks)
+- [ ] Each bet has clear appetite (XS / S / M / L / XL)
 - [ ] Total estimated PRs ≤ review capacity
 - [ ] Reviewer assigned and available
 - [ ] Kickoff materials ready (pitches linked)
