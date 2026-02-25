@@ -17,7 +17,7 @@ This guide bridges **Shape Up methodology** (how we organize work) with **Claude
 - Real-world examples at different scales
 
 **Who this is for:**
-- Developers at PILL
+- Developers at ExampleCompany
 - Open-source contributors to shape-up-ai-native
 - Teams wanting to adopt AI-native development
 
@@ -2383,7 +2383,7 @@ Days remaining: 28 days
 
 ### Comparison: Before vs After AI Agents
 
-**Typical PILL project metrics:**
+**Typical ExampleCompany project metrics:**
 
 | Metric | Before AI | After AI | Improvement |
 |--------|-----------|----------|-------------|
@@ -2505,7 +2505,7 @@ Update Basecamp: Scope 1 is complete
 - **Claude Code Masterclass** snippets (this guide's approach)
 - **Cursor IDE** with Claude
 - **GitHub Copilot** + custom prompts
-- **OpenClaw** + Claude API (PILL's setup)
+- **OpenClaw** + Claude API (ExampleCompany's setup)
 
 **Cost:** $20-200/month depending on usage
 
@@ -2641,7 +2641,7 @@ Our implementation adapts Shape Up for AI agent collaboration.
 
 ---
 
-### PILL Resources
+### ExampleCompany Resources
 - **This repository:** https://github.com/sergiolindolfoferreira/shape-up-ai-native
 - **Contributing:** See [CONTRIBUTING.md](../CONTRIBUTING.md)
 - **Setup guide:** [Agent Setup Guide](./agent-setup-guide.md)
@@ -2658,8 +2658,8 @@ Our implementation adapts Shape Up for AI agent collaboration.
 3. **Review existing specs** → See `/examples/` in this repo
 4. **Join the community** → Contribute to shape-up-ai-native
 
-**For PILL team members:**
-- Read [Basecamp Implementation](./basecamp-implementation.md) for PILL-specific setup
+**For ExampleCompany team members:**
+- Read [Basecamp Implementation](./basecamp-implementation.md) for ExampleCompany-specific setup
 - Check Basecamp → Shaping Team for active pitches
 - Ask Sergio or Vasco for onboarding
 

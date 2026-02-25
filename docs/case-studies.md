@@ -71,8 +71,8 @@ Or just email: [coming soon]
 
 We're working with these teams (stories coming soon):
 
-- **PILL** (Portugal) — Software consultancy using Shape Up AI Native with Claude/GPT-4
-- **Borlantrix** (Estonia) — SaaS product company, MoneyLights development
+- **ExampleCompany** (Portugal) — Software consultancy using Shape Up AI Native with Claude/GPT-4
+- **ProductCompany** (Estonia) — SaaS product company, ExampleProduct development
 - **[Your company here]** — Be the first external case study!
 
 ---
