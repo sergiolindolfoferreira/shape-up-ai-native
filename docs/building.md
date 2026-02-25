@@ -4,6 +4,39 @@
 
 ---
 
+## Three Gates — The Non-Negotiable Process
+
+Before any code is written, the human must validate two documents. No exceptions.
+
+```
+PITCH (approved in Betting)
+  │
+  ├─► SPEC   → agent creates spec.md   → ⏸️ GATE 1: Human approves
+  │
+  ├─► PLAN   → agent creates plan.md   → ⏸️ GATE 2: Human approves
+  │
+  └─► IMPLEMENT → agent writes code → PRs → ⏸️ GATE 3: Human reviews & merges
+```
+
+### Why Three Gates?
+
+| Gate | What it catches | Cost of skipping |
+|---|---|---|
+| **Spec** | Wrong problem, wrong scope, missing constraints | Agent builds the wrong thing entirely |
+| **Plan** | Risky architecture, missing pieces, wrong breakdown | Agent builds the right thing the wrong way |
+| **PR Review** | Bugs, edge cases, code quality | Broken features in production |
+
+**The agent is fast. Gates are cheap. Skipping them is expensive.**
+
+### Gate Rules
+
+- **Agent never starts coding without Gate 2 approval**
+- **Agent never spawns sub-agents to implement without explicit Plan approval**
+- **If human says "just go ahead with everything"** → agent must confirm: *"Confirm you're approving Spec + Plan + Implement without intermediate review?"*
+- Gates are sequential — no parallelising Spec and Plan
+
+---
+
 ## The Core Loop
 
 ```
