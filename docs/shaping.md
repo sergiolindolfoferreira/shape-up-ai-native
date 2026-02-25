@@ -48,12 +48,29 @@ Who: Property managers with 20+ active listings.
 
 Not estimate (how long will it take?) but appetite (how much is it worth?).
 
-Options:
-- **Small batch:** 1-2 days (tiny feature, bug fix, small improvement)
-- **Standard cycle:** 1 week (most features)
-- **Big batch:** 2 weeks (major feature, complex integration)
-
 **Never more than 2 weeks** (if bigger, split it)
+
+#### AI-Native Appetite Scale
+
+In AI-native teams, work distributes very differently from traditional dev cycles:
+
+| Phase | % of cycle | Notes |
+|---|---|---|
+| **Pitch / Shaping** | 60% | Where most of the value is created |
+| **Agent implementation** | 10% | Fast — a well-defined pitch ships in hours to 1 day |
+| **Human validation** | 30% | The real bottleneck — review, real-context testing, edge cases |
+
+**Appetite measures human attention, not agent speed.** The agent is always ready. The human has a day full of interruptions.
+
+| Level | Duration | Criteria | Examples |
+|---|---|---|---|
+| ⚡ **XS** | Half day | 1 isolated component, zero regression risk. Human reviews PR in 5 min | Label change, validation tweak, small UI fix |
+| 🟢 **S** | 1 day | Simple feature, 1-2 components, no new integrations. 1 review session | New form field, simple list filter |
+| 🟡 **M** | 2-3 days | 3-5 components, new business logic. 1-2 real-context test cycles | Events module, simple notifications |
+| 🟠 **L** | 1 week | Cross-cutting feature, multiple PRs, possible client coordination | Billing module, external service integration |
+| 🔴 **XL** | 2 weeks | Architectural impact, high regression risk, multiple stakeholders | DB migration, new core module |
+
+**If a pitch feels too big:** split the scope, don't extend the appetite.
 
 **For AI agents:** Appetite prevents infinite optimization. Agent will fill available time.
 
@@ -154,13 +171,15 @@ OUT OF SCOPE for v1:
 
 ### Step 1: Set Appetite (5 min)
 
-"How much time is this worth?"
+"How much human attention is this worth?"
 
-- Small win? → 1-2 days
-- Meaningful feature? → 1 week
-- Major capability? → 2 weeks
+- Isolated component, minimal review? → ⚡ XS (half day)
+- Simple feature, quick review? → 🟢 S (1 day)
+- New business logic, real-context testing? → 🟡 M (2-3 days)
+- Cross-cutting, multiple PRs? → 🟠 L (1 week)
+- Architectural impact, high risk? → 🔴 XL (2 weeks)
 
-**If you can't decide:** Too vague, need more thinking.
+**If you can't decide:** Too vague, need more thinking. A well-shaped pitch always has a clear appetite.
 
 ### Step 2: Rough Out Elements (15-20 min)
 
@@ -386,7 +405,7 @@ This pitch is ready to hand to an AI agent for autonomous implementation.
 Before betting on a pitch, verify:
 
 - [ ] Problem is clear (3-5 sentences, specific user)
-- [ ] Appetite is set (1-2 days, 1 week, or 2 weeks)
+- [ ] Appetite is set (XS / S / M / L / XL) and reflects human validation cost, not agent speed
 - [ ] Solution is rough (breadboard or fat marker)
 - [ ] Rabbit holes identified (technical risks listed)
 - [ ] Boundaries defined (OUT OF SCOPE section exists)
