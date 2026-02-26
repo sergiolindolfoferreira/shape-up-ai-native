@@ -428,3 +428,35 @@ Progress: 50% (2/4 scopes done)
 - [Set Up Basecamp](basecamp-implementation.md) - Configure your workflow
 
 **🎯 Back to:** [README](../README.md) (Table of contents)
+
+---
+
+## Repository Structure
+
+Every repo using Shape Up AI Native **must always** have this structure:
+
+```
+.claude/
+  commands/       → Custom Claude Code slash commands
+  agents/         → Claude Code sub-agents
+_specs/
+  <feature-slug>/
+    spec.md       → Gate 1 document (human approves before Plan)
+_plans/
+  <feature-slug>/
+    plan.md       → Gate 2 document (human approves before code)
+```
+
+### Branch Naming Convention
+
+| Branch | Purpose |
+|---|---|
+| `spec/<slug>` | PR opened for Spec review (Gate 1) |
+| `plan/<slug>` | PR opened for Plan review (Gate 2) |
+| `feature/<slug>` | PR opened for implementation review (Gate 3) |
+
+### Why this structure?
+
+- **`_specs/` and `_plans/`** — underscore prefix keeps them visually grouped and separate from source code. Easy to find, easy to audit.
+- **`.claude/`** — standard location for Claude Code customizations. Consistent across all repos.
+- **Branch naming** — makes the current gate immediately visible in GitHub's PR list.
